@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome!</title>
+    {% include 'includes/header-includes.html.jinja2' %}
+</head>
+<body>
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12 col-md-12">
+            <div style="text-align: center;">
+                <h1>Group 1's Lab 2 Submission</h1>
+                <p>You can use the links & forms below to run the lab's queries via the API</p>
+                <br>
+                <h2>Mashup Queries</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-12 col-md-6">
+            <h3 class="mb-2">Query 1: Given a researcher's name and a year, list all their published articles metadata</h3>
+            <form action="/query/researchers-articles-metadata" method="GET" target="_blank">
+
+                <div class="form-group mb-2">
+                    <label for="l2-researcher" class="form-label">Researcher</label>
+                    <input type="text" name="researcher" id="l2-researcher" class="form-control" value="Jia Zhang">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="l2-year" class="form-label">Year</label>
+                    <input type="number" name="year" id="l2-year" class="form-control" value="2014">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-12 col-md-6">
+            <h3 class="mb-2">Query 2: For the Productive Authors in the area of SOSE, list all of their coauthors</h3>
+            <form action="/query/productive-authors-coauthors" method="GET" target="_blank">
+
+                <div class="form-group">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <div class="row mb-4">
+        <div class="col-12 col-md-12">
+            <div style="text-align: center;">
+                <h1>Group 1's Lab 1 Submission</h1>
+                <p>You can use the links & forms below to run the lab's queries</p>
+                <br>
+
+                <h2 class="mb-2">Standard Queries</h2>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-6">
+
+            <!-- QUERY 1 ROW -->
+
+            <h3 class="mb-2">Query 1: Given an author, list their co-authors</h3>
+            <form action="/query/coauthors" method="GET" target="_blank">
+
+                <div class="form-group mb-2">
+                    <label for="author" class="form-label">Author</label>
+                    <input type="text" name="author" id="author" class="form-control" value="Jia Zhang">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="col-md-6">
+            <!-- QUERY 2 ROW -->
+
+            <h3 class="mb-2">Query 2:Given a paper name, list its metadata</h3>
+            <form action="/query/paper-metadata" method="GET" target="_blank">
+
+                <div class="form-group mb-2">
+                    <label for="paper_title" class="form-label">Paper Title</label>
+                    <input type="text" name="title" id="paper_title" class="form-control"
+                           value="Long-Term QoS-Aware Cloud Service Composition Using Multivariate Time Series Analysis.">
+                </div>
+                <div class=" form-group">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-6">
+
+            <!-- QUERY 3 -->
+            <h3 class="mb-2">Query 3: Given a journal name & year, find the metadata of the articles</h3>
+            <form action="/query/journal-metadata" method="GET" target="_blank">
+
+                <div class="form-group mb-2">
+                    <label for="journal_title" class="form-label">Journal</label>
+                    <input type="text" name="journal" id="journal_title" class="form-control"
+                           value="IEEE Trans. Services Computing">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="volume_no" class="form-label">Volume Number</label>
+                    <input type="number" name="volume" id="volume_no" class="form-control"
+                           value="11">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="year_1" class="form-label">Year</label>
+                    <input type="number" name="year" id="year_1" class="form-control"
+                           value="2018">
+                </div>
+                <div class=" form-group">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3 class="mb-2">Query 4: Given a conference name & year, find the metadata of the proceedings</h3>
+            <form action="/query/conference-paper-metadata" method="GET" target="_blank">
+
+                <div class="form-group mb-2">
+                    <label for="conference" class="form-label">Conference</label>
+                    <input type="text" name="conference" id="conference" class="form-control"
+                           value="IEEE SCC">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="year_2" class="form-label">Year</label>
+                    <input type="number" name="year" id="year_2" class="form-control"
+                           value="2010">
+                </div>
+                <div class=" form-group">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-12 col-md-12">
+            <div style="text-align: center">
+                <h2>Bonus: Queries run with XQuery</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h3 class="mb-2">Query 1: Display all the article titles published in the area of SOSE</h3>
+            <form action="/query/sose-papers" method="GET" target="_blank">
+
+
+                <div class="form-group">
+                    <button class="btn btn-primary">Run Query</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-6">
+
+            <h3 class="mb-2">Query 2: Display the titles of all articles published by a researcher in a specific
+                year</h3>
+            <form action="/query/researcher-paper-titles" method="GET" target="_blank">
+
+                <div class="form-group mb-2">
+                    <label for="researcher">Researcher</label>
+                    <input type="text" id="researcher" name="researcher" value="Jia Zhang" class="form-control">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="year_3">Year</label>
+                    <input type="number" id="year_3" name="year" value="2014" class="form-control">
+                </div>
+
+                <div class="form-group mb-2">
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <!-- QUERY 3 ROW -->
+
+            <h3 class="mb-2">Query 3: Display all authors who have published more than 10 papers in the area of
+                SOSE</h3>
+            <form action="/query/authors-with-more-than-ten" method="GET" target="_blank">
+
+                <div class="form-group">
+                    <button class="btn btn-primary">Run Query</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3 class="mb-2">Query 4: Given a paper name, list its publication metadata</h3>
+            <form action="/query/publication-metadata-xquery" method="GET" target="_blank">
+
+                <div class="form-group mb-2">
+                    <label for="paper" class="form-label">Paper Title</label>
+                    <input type="text" name="paper" id="paper" class="form-control"
+                           value="Long-Term QoS-Aware Cloud Service Composition Using Multivariate Time Series Analysis.">
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary">Run Query</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% include 'includes/footer-includes.html.jinja2' %}
+
+</body>
+</html>

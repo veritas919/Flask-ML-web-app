@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paper Topic App</title>
+
+    {% include 'includes/header-includes.html.jinja2' %}
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-light p-2 justify-content-center">
+
+    <!-- BRAND -->
+    <a href="#" class="navbar-brand ml-2 text-center">
+        <h1 class="text-center">
+            DBLP Research Paper Topics
+        </h1>
+    </a>
+</nav>
+<div class="container">
+    <!-- SIDEBAR AND CONTENTS -->
+    <div class="row">
+
+        <!-- SIDEBAR -->
+        <div class="col-md-3">
+            <div class="nav flex-column">
+                {% for topic in topic_counts %}
+                    <a href="/app/topic/{{ topic['ordinal'] }}"
+                       class="nav-link {{ 'fw-bold' if topic['ordinal'] == topic_number }}">{{ topic['topic'] }}
+                        ({{ topic['occurrences'] }})</a>
+
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- CONTENTS-->
+        <div class="col-md-9" style="text-align: center">
+            <br>
+            <h2>{{ publication.title }}</h2>
+            <br>
+            <!-- LIST GROUP -->
+            <h5> {% for author in publication.authors %}
+                {{ author.name }}{% if not loop.last %},{% endif %}
+            {% endfor %}
+            </h5>
+            <h6>{{ publication.booktitle or publication.journal }},
+                pp. {{ publication.pages }}. {{ publication.year }}. </h6>
+            <br>
+            <h6>Publication ID: {{ publication.id }}</h6>
+            <br>
+            <p>{{ publication.abstract }}</p>
+            <p>Primary category: {{ publication.topics.predicted_topic }}</p>
+            <br>
+            <p>Other topic categories for this document:
+                {% for key in publication.topics.__dict__ %}
+                {% if publication.topics.__dict__[key] != 0 and 'topic' in key and not 'predicted' in key %}
+                    {{ key }} ({{ "%2.2f" | format(publication.topics.__dict__[key] * 100) }}%){% if not loop.last %}, {% endif %}{% endif %}
+                {% endfor %}
+            </p>
+
+        </div>
+    </div>
+</div>
+
+
+{% include 'includes/footer-includes.html.jinja2' %}
+</body>
+</html>

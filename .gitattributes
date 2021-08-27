@@ -1,0 +1,4 @@
+*.model binary
+*.expElogbeta.npg binary
+*.model.id2word binary
+*.model.state binary

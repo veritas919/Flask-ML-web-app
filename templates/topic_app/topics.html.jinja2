@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paper Topic App</title>
+
+    {% include 'includes/header-includes.html.jinja2' %}
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-light p-2 justify-content-center">
+
+    <!-- BRAND -->
+    <a href="#" class="navbar-brand ml-2 text-center">
+        <h1 class="text-center">
+            DBLP Research Paper Topics
+        </h1>
+    </a>
+</nav>
+<div class="container">
+    <!-- SIDEBAR AND CONTENTS -->
+    <div class="row">
+
+        <!-- SIDEBAR -->
+        <div class="col-md-3">
+            <div class="nav flex-column">
+                {% for topic in topic_counts %}
+                <a href="/app/topic/{{ topic['ordinal'] }}" class="nav-link {{ 'fw-bold' if topic['ordinal'] == topic_number }}">{{ topic['topic'] }} ({{ topic['occurrences'] }})</a>
+
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- CONTENTS-->
+        <div class="col-md-9">
+            <br>
+            <h2>Topic {{ topic_number }} Publications</h2>
+            <br>
+            <!-- LIST GROUP -->
+            <ol class="list-group list-group-numbered">
+                {% for publication in publications %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ publication.title }} (<a href="/app/publication/{{ publication.id }}">View</a>)</div>
+                            {% for author in publication.authors %}
+                                {{ author.name }}{% if not loop.last %},{% endif %}
+                            {% endfor %}
+                    </div>
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+{% include 'includes/footer-includes.html.jinja2' %}
+</body>
+</html>

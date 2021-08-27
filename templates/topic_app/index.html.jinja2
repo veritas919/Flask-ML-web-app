@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paper Topic App</title>
+
+    {% include 'includes/header-includes.html.jinja2' %}
+</head>
+<body>
+
+<nav class="navbar navbar-light bg-light p-2 justify-content-center">
+
+    <!-- BRAND -->
+    <a href="#" class="navbar-brand ml-2 text-center">
+        <h1 class="text-center">
+            DBLP Research Paper Topics
+        </h1>
+    </a>
+</nav>
+<div class="container">
+    <!-- SIDEBAR AND CONTENTS -->
+    <div class="row">
+
+        <!-- SIDEBAR -->
+        <div class="col-md-3">
+            <div class="nav flex-column">
+                {% for topic in topic_counts %}
+                <a href="/app/topic/{{ topic['ordinal'] }}" class="nav-link {{ 'fw-bold' if topic['ordinal'] == topic_number }}">{{ topic['topic'] }} ({{ topic['occurrences'] }})</a>
+
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- CONTENTS-->
+        <div class="col-md-9">
+            <br>
+            <h2>Please select a topic.</h2>
+            <br>
+
+        </div>
+    </div>
+</div>
+
+
+{% include 'includes/footer-includes.html.jinja2' %}
+</body>
+</html>

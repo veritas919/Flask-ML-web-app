@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Query Results</title>
+    {% include 'includes/header-includes.html.jinja2' %}
+</head>
+<body>
+<h2>Query Results</h2>
+<h3>You Queried:</h3>
+<p>{{ query }}</p>
+<h3>Your response:</h3>
+<p>{{ data }}</p>
+
+<br>
+<br>
+<a href="/">Go Home</a>
+
+{% include 'includes/footer-includes.html.jinja2' %}
+</html>
